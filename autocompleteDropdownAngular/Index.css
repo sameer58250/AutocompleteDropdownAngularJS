@@ -1,0 +1,107 @@
+﻿.listDisp{
+    list-style-type:none;
+    border:1px solid black;
+    padding-left:2px;
+    display:table-cell;        
+    position:absolute;
+    margin-top:0;
+    width:231px;
+    background-color:white;
+    max-height:200px;
+    overflow-y:auto
+}
+.listDisp > li{
+    padding: 2px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modalContent{
+    padding:10px;
+    background-color:white;
+    width:480px;
+    height:auto;
+    margin:auto;
+    top:26px;
+}
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 26px;
+}
+li:hover{
+    background-color: lightsteelblue;
+}
+input[type=text]::-ms-clear {
+    display: none;
+}
+.selectedItem{
+    background-color: blue;
+}
+button{
+    cursor: pointer;
+}
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modalHeader{
+    display:inline-block;
+    width:100%
+}
+.tableRow{
+    display: table;
+}
+.tableRow >div{
+    display: table-row;
+}
+.tableRow >div >label{
+    display: table-cell;
+}
+.tableRow >div >div{
+    display: table-cell;
+}
+.dropdownBox{
+    width:200px;
+    height:26px;
+    padding-left:3px
+}
+h1{
+    color:blue;
+    display:inline-block;
+}
+.footerBtn{
+    margin-top:15px;
+}
+.footerBtn > button{
+    height: 30px;
+}
+.modalOpenBtn{
+    height:30px;
+    width:100px;
+}
+#employeeList{
+    z-index: 5;
+}
+#teamList{
+    z-index: 10;
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}

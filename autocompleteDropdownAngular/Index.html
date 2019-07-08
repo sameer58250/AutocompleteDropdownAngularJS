@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<script src="scripts/angular/angular.min.js"></script>
+<script src="IndexModule.js"></script>
+<script src="IndexFilter.js"></script>
+<script src="IndexController.js"></script>
+<link href="Index.css" rel="stylesheet" />
+<html>
+<head>
+    <title>AutoComplete Dropdown</title>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="indexModule" ng-controller="indexController as vm">
+   <div  id="myModal" class="modal" ng-click="closeDropdown()">
+       <div class="modalContent">
+           <div class="modalHeader">
+               <h1>Select an Employee</h1>
+               <p class="close" ng-click="closeModal()" tabindex="1">&times;</p>
+           </div>
+           <div class="tableRow">
+               <div>
+                   <label>Select a Team in Organization</label>
+                   <div id="TeamUl" ng-keydown="handleKeyDownTeam($event,'Team')" ng-click="stop($event)">
+                       <input type="text" name="TeamInput" class="dropdownBox" ng-model="Team" ng-change="textChange('Team')" tabindex="2"
+                              placeholder="Select a Team" /><button style="padding:7px;" ng-click="dropdownBtnClick($event,'Team')" tabindex="3">
+                           &#x25BC
+                       </button>
+                   </div>
+               </div>
+               <div ng-if="displyTeam">
+                   <label></label>
+                   <ul id="teamList" class="listDisp">
+                       <li id="{{'team'+$index}}" ng-repeat="team in data | filterTeam:Team" ng-click="selectTeam(team)" ng-class="{selectedItem : $index==focusedIndex}">
+                           <label>{{team.Team}}</label>
+                       </li>
+                   </ul>
+               </div>
+               <br />
+               <div>
+                   <label>Select an Employee</label>
+                   <div id="EmployeeUl" ng-keydown="handleKeyDownTeam($event,'Employee')" ng-click="stop($event)">
+                       <input type="text" name="EmployeeInput" ng-model="selectedEmplyee" placeholder="Select an Employee" class="dropdownBox" tabindex="4"
+                               ng-change="textChange('Employee')" /><button style="padding:7px;" ng-click="dropdownBtnClick($event,'Employee')" tabindex="5">
+                           &#x25BC
+                       </button>
+                   </div>
+               </div>
+               <div ng-if="displyEmployee">
+                   <label></label>
+                   <ul id="employeeList" class="listDisp">
+                       <li id="{{'employee'+$index}}" ng-repeat="employee in data| filterEmployee:Team:selectedEmplyee" ng-click="selectEmployee(employee)" ng-class="{selectedItem : $index==focusedIndex}">
+                           <label>{{employee}}</label>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+           <div ng-show="error" class="footerBtn">
+               <p class="error">{{error}}</p>
+           </div>
+           <div ng-show="info" class="footerBtn">
+               <p class="success">{{info}}</p>
+           </div>
+           <div class="footerBtn">
+               <button ng-click="sendEmail()" tabindex="6">Send Email</button>
+           </div>
+       </div>
+   </div>
+    <div style="text-align:center;" id="openModal">
+        <button class="modalOpenBtn" ng-click="openModal()">Open</button>
+    </div>
+</body>
+</html>
